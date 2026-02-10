@@ -402,6 +402,19 @@
             height: 100%;
             display: block;
         }
+
+        /* Scroll Animations */
+        .reveal {
+            position: relative;
+            transform: translateY(50px);
+            opacity: 0;
+            transition: all 1s ease;
+        }
+
+        .reveal.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
     </style>
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -426,7 +439,7 @@
     </header>
 
     <main>
-        <section id="home" class="hero">
+        <section id="home" class="hero reveal">
             <div class="container">
                 <div class="hero-content">
                     <h1>Embrace Your Strength</h1>
@@ -439,7 +452,7 @@
             </div>
         </section>
 
-        <section id="features" class="features">
+        <section id="features" class="features reveal">
             <div class="container">
                 <div class="section-title">
                     <h2>Why Choose Us?</h2>
@@ -465,7 +478,7 @@
             </div>
         </section>
 
-        <section id="services" class="services">
+        <section id="services" class="services reveal">
             <div class="container">
                 <div class="section-title">
                     <h2>Our Classes</h2>
@@ -490,7 +503,7 @@
             </div>
         </section>
 
-        <section id="contact" class="contact">
+        <section id="contact" class="contact reveal">
             <div class="container">
                 <div class="contact-container">
                     <div class="contact-info">
@@ -525,7 +538,7 @@
             </div>
         </section>
 
-        <section class="map-section">
+        <section class="map-section reveal">
             <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6159.527132548709!2d91.8173322!3d22.3554891!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30acd975e72d37db%3A0xbe4af94b54106f74!2sSlim%20Fast%20Ladies%20GYM!5e1!3m2!1sen!2sbd!4v1770743605340!5m2!1sen!2sbd" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </section>
     </main>
@@ -596,6 +609,24 @@
                     });
                 }
             });
+        });
+
+        // Intersection Observer for scroll animations
+        const revealCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        };
+
+        const revealObserver = new IntersectionObserver(revealCallback, {
+            threshold: 0.15
+        });
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            revealObserver.observe(el);
         });
     </script>
 </body>
