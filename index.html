@@ -289,7 +289,9 @@
 
         @media (min-width: 1024px) {
             .contact-container {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 1fr;
+                max-width: 600px;
+                margin: 0 auto;
             }
         }
 
@@ -514,24 +516,6 @@
                                 <p>Sat - Thu: 7:00 AM - 9:00 PM<br>Friday: Closed</p>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="contact-form">
-                        <form action="#">
-                            <div class="form-group">
-                                <label for="name">Your Name</label>
-                                <input type="text" id="name" name="name" required placeholder="Jane Doe">
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email Address</label>
-                                <input type="email" id="email" name="email" required placeholder="jane@example.com">
-                            </div>
-                            <div class="form-group">
-                                <label for="message">Message</label>
-                                <textarea id="message" name="message" rows="4" required placeholder="How can we help you?"></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
-                        </form>
                     </div>
                 </div>
             </div>
